@@ -1,0 +1,81 @@
+version: '3'
+services:
+
+  app:
+    tty: true
+    stdin_open: true
+    build: .
+    command: bundle exec rails s -p 3001 -b '0.0.0.0'
+    #env_file:
+    # - config/application.yml
+    environment:
+      - DOCKER_SELENIUM=true
+      - GRAYLOG_SERVICE=app
+    volumes:
+      - .:/data_collector
+        #- /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+        # - sidekiq
+      - redis
+      - selenium
+    links:
+      - db:db
+      - redis:redis
+      - selenium:selenium
+
+ #sidekiq:
+ #  tty: true
+ #  stdin_open: true
+ #  image: staging-scrapers
+ #  #env_file:
+ #  #  - config/application.yml
+ #  command: bundle exec sidekiq --environment development -C config/sidekiq.yml
+ #  environment:
+ #    - DOCKER_SELENIUM=true
+ #    - GRAYLOG_SERVICE=sidekiq
+ #  volumes:
+ #    - .:/data_collector
+ #    - /var/run/docker.sock:/var/run/docker.sock
+ #  depends_on:
+ #    - redis
+ #    - db
+ #    - selenium
+ #  links:
+ #    - redis:redis
+ #    - db:db
+ #    - selenium:selenium
+
+  redis:
+    image: 'redis:3.0.0'
+    command: redis-server --port 6380 --appendonly yes
+    ports:
+      - "6380:6380"
+    volumes:
+      - ./.data/redis:/data
+
+  db:
+    image: postgres:10.6
+    volumes:
+      - ./.data/postgres:/var/lib/postgresql/data
+
+  selenium:
+    image: selenium/standalone-firefox-debug:3.141.59-mercury
+    ports:
+      - 127.0.0.1:5901:5900
+      - 4444:4444
+    volumes:
+      - /dev/shm:/dev/shm
+      - ./tmp:/data_collector/tmp
+    environment:
+      - VNC_NO_PASSWORD=1
+      - SCREEN_WIDTH=1366
+      - SCREEN_HEIGHT=768
+      - SCREEN_DEPTH=24
+    links:
+      - hub
+
+  hub:
+    image: selenium/hub
