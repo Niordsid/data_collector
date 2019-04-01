@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 2019_04_01_212906) do
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
+    t.string "code"
+    t.string "type"
     t.string "base_token_10"
     t.string "base_token_20"
     t.string "base_token_30"
@@ -25,6 +27,7 @@ ActiveRecord::Schema.define(version: 2019_04_01_212906) do
     t.string "base_token_70"
     t.string "base_token_80"
     t.string "base_token_90"
+    t.string "base_token_100"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
