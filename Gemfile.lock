@@ -79,11 +79,14 @@ GEM
     connection_pool (2.2.2)
     crass (1.0.4)
     database_cleaner (1.7.0)
+    diff-lcs (1.3)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.8.0)
     execjs (2.7.0)
     ffi (1.10.0)
+    figaro (1.1.1)
+      thor (~> 0.14)
     geckodriver-helper (0.23.0)
       archive-zip (~> 0.7)
     globalid (0.4.2)
@@ -166,6 +169,20 @@ GEM
       netrc (~> 0.8)
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
+    rspec-expectations (3.8.2)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.8.0)
+    rspec-mocks (3.8.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.8.0)
+    rspec-rails (3.8.2)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.8.0)
+      rspec-expectations (~> 3.8.0)
+      rspec-mocks (~> 3.8.0)
+      rspec-support (~> 3.8.0)
     rspec-sidekiq (3.0.3)
       rspec-core (~> 3.0, >= 3.0.0)
       sidekiq (>= 2.4.0)
@@ -239,6 +256,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   database_cleaner
+  figaro
   geckodriver-helper
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
@@ -248,6 +266,7 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.3)
   rest-client
+  rspec-rails
   rspec-sidekiq
   sass-rails (~> 5.0)
   selenium-webdriver (~> 3.11)
