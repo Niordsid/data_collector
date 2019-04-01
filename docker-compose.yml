@@ -5,9 +5,9 @@ services:
     tty: true
     stdin_open: true
     build: .
-    command: bundle exec rails s -p 3001 -b '0.0.0.0'
-    #env_file:
-    # - config/application.yml
+    command: bundle exec rails s -p 3007 -b '0.0.0.0'
+    env_file:
+     - config/application.yml
     environment:
       - DOCKER_SELENIUM=true
       - GRAYLOG_SERVICE=app
@@ -15,10 +15,10 @@ services:
       - .:/data_collector
         #- /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - "3001:3001"
+      - "3007:3007"
     depends_on:
       - db
-        # - sidekiq
+      - sidekiq
       - redis
       - selenium
     links:
@@ -26,27 +26,27 @@ services:
       - redis:redis
       - selenium:selenium
 
- #sidekiq:
- #  tty: true
- #  stdin_open: true
- #  image: staging-scrapers
- #  #env_file:
- #  #  - config/application.yml
- #  command: bundle exec sidekiq --environment development -C config/sidekiq.yml
- #  environment:
- #    - DOCKER_SELENIUM=true
- #    - GRAYLOG_SERVICE=sidekiq
- #  volumes:
- #    - .:/data_collector
- #    - /var/run/docker.sock:/var/run/docker.sock
- #  depends_on:
- #    - redis
- #    - db
- #    - selenium
- #  links:
- #    - redis:redis
- #    - db:db
- #    - selenium:selenium
+  sidekiq:
+    tty: true
+    stdin_open: true
+    image: staging-scrapers
+    #env_file:
+    #  - config/application.yml
+    command: bundle exec sidekiq --environment development -C config/sidekiq.yml
+    environment:
+      - DOCKER_SELENIUM=true
+      - GRAYLOG_SERVICE=sidekiq
+    volumes:
+      - .:/data_collector
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - redis
+      - db
+      - selenium
+    links:
+      - redis:redis
+      - db:db
+      - selenium:selenium
 
   redis:
     image: 'redis:3.0.0'
