@@ -38,6 +38,7 @@ gem 'figaro'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'faker'
 gem 'factory_bot_rails', '~> 4.0'
 
 # gems for scraping

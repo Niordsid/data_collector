@@ -1,5 +1,9 @@
 class Account < ApplicationRecord
 
+  self.inheritance_column = 'sti_type'
+
+  validates_presence_of :code, :type
+
   def set_credentials(username, password)
     (1..10).each {|i| self.write_attribute( "base_token_#{i}0", encrypt_data(random_touple)) }
     self.write_attribute(ENV['CREDENTIALS_BASE_TOKEN'], encrypt_data("#{username},#{password}"))
