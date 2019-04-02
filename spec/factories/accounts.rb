@@ -20,17 +20,17 @@
 
 FactoryBot.define do
   factory :account do
-    base_token_10 "pepito/perez"
-    base_token_20 "pepito/perez"
-    base_token_30 "pepito/perez"
-    base_token_40 "pepito/perez"
-    base_token_50 "pepito/perez"
-    base_token_60 "pepito/perez"
-    base_token_70 "pepito/perez"
-    base_token_80 "pepito/perez"
-    base_token_90 "pepito/perez"
-    base_token_100 "pepito/perez"
     code '20101020089'
     type 'student'
+    base_token_10 'pepito/perez'
+    base_token_20 'pepito/perez'
+    base_token_30 'pepito/perez'
+    base_token_40 'pepito/perez'
+    base_token_50 'pepito/perez'
+    base_token_60 'pepito/perez'
+    base_token_70 'pepito/perez'
+    base_token_80 'pepito/perez'
+    base_token_90 'pepito/perez'
+    base_token_100 'pepito/perez'
   end
 end

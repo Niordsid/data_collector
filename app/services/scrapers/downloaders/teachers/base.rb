@@ -1,9 +1,7 @@
 require 'capybara/dsl'
 
 class Scrapers::Downloaders::Teachers::Base < ActiveModelService
-  include CapybaraMixins
   include Capybara::DSL
-  include 'nokogiri'
   include Scrapers::Helpers
 
   CONDOR_URL = 'https://estudiantes.portaloas.udistrital.edu.co/appserv/'.freeze
@@ -23,5 +21,6 @@ class Scrapers::Downloaders::Teachers::Base < ActiveModelService
 
   def call(options={})
     authenticate_account(session, user_account)
+    download_information
   end
 end

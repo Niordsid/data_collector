@@ -39,7 +39,6 @@ gem 'figaro'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'faker'
-gem 'factory_bot_rails', '~> 4.0'
 
 # gems for scraping
 gem 'capybara'
@@ -52,6 +51,7 @@ gem 'openssl'
 gem 'rest-client'
 
 group :development, :test do
+  gem 'factory_bot_rails', '~> 4.0'
   gem 'spirit_hands'
   gem 'rspec-rails'
 end
