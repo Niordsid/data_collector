@@ -4,7 +4,6 @@ module Scrapers::Helpers
 
   def authenticate_account(session, user_account)
     session.visit(CONDOR_URL)
-    binding.pry
     session.find(:xpath, '//*[@id="nickname"]', wait: 5)
     session.fill_in 'nickname', with: user_account.decrypted_username
     session.fill_in 'contrasena', with: user_account.decrypted_password
