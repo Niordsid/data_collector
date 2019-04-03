@@ -15,7 +15,20 @@ Documentation for install Docker-Compose
 
 ## Configuration
 
-  After install Docker and Docker-Compose, download the project and create a file in the folder config/ called application.yml and paste this [keys](https://docs.google.com/document/d/1C8REtATrGAbhJ8G4rPSnElJC0A4B-GrRaYDZ4V5gdvs/edit?usp=sharing) then build the project with this command:
+  After install Docker and Docker-Compose, download the project and create a file in the folder config/ called application.yml and paste this  development:                                                                                                                                                                                              
+   ENCODED_KEY: "Fv0rYACkGYKpvO+PvDZ0/Gu8S+CI4dtT4Qw5v8XOTHk=\n"                                                                                                                                           
+   ENCODED_SALT: 'xji7/26BMc+K07j4B8RG9/f7O1YubZidQXwKu6OwvEcCKEQvD3fSEy7Cywrg\nKO5LbNmw5s8NUxSaxuSoA9UbDg==\n'                                                                                            
+   CREDENTIALS_BASE_TOKEN: 'base_token_30'                                                                                                                                                                 
+   CONDOR_USERNAME: ‘insertecodigoaqui’                                                                                                                                                                          
+   CONDOR_PSS: 'insertepassaqui'                                                                                                                                                                                 
+ test:                                                                                                                                                                                                     
+   ENCODED_KEY: "Fv0rYACkGYKpvO+PvDZ0/Gu8S+CI4dtT4Qw5v8XOTHk=\n"                                                                                                                                           
+   ENCODED_SALT: 'xji7/26BMc+K07j4B8RG9/f7O1YubZidQXwKu6OwvEcCKEQvD3fSEy7Cywrg\nKO5LbNmw5s8NUxSaxuSoA9UbDg==\n'                                                                                            
+   CREDENTIALS_BASE_TOKEN: 'base_token_30'                                                                                                                                                                 
+   CONDOR_USERNAME: ‘insertecodigoaqui’                                                                                                                                                                          
+   CONDOR_PSS: 'insertepassaqui'
+   
+ then build the project with this command:
   ```
   sudo docker-compose build
   ```
