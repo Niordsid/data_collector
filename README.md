@@ -11,9 +11,11 @@ Documentation for install Docker
 Documentation for install Docker-Compose
 - https://docs.docker.com/compose/install/
 
+- This project was tested in ubuntu 16.04
+
 ## Configuration
 
-  After install Docker and Docker-Compose, download the project and built it with this command:
+  After install Docker and Docker-Compose, download the project and create a file in the folder config/ called application.yml and paste this [keys](https://docs.google.com/document/d/1C8REtATrGAbhJ8G4rPSnElJC0A4B-GrRaYDZ4V5gdvs/edit?usp=sharing) then build the project with this command:
   ```
   sudo docker-compose build
   ```
